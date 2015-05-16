@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Mayank Meghwanshi">
+    <link rel='stylesheet' href="/stylesheets/bootstrap.min.css" />
+    <link rel='stylesheet' href="/stylesheets/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/baraja.css">
+    <link rel='stylesheet' href="/stylesheets/mindfk.css" />
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <a href="#"><h3><i class="fa fa-group"></i> Mind Fk</h3></a>
+    </div>
+    <div>
+        {{{body}}}
+    </div>
+    <div class="footer">
+        <p>&copy; MindFk 2015, <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by
+            <a target="_blank" href="http://www.github.com/mayank127">Mayank Meghwanshi</a></p>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Help</h4>
+          </div>
+          <div class="modal-body">
+            <ul>
+                <li>The players are divided into 2 teams.</li>
+                <li>48 cards are dealt which are divided into 8 half-suits, such as "low spades" or "high hearts".</li>
+                <li>Play proceeds with a player requesting a card from a player on the other team.</li>
+                <li>Players may only request cards in half-suits that they already partly have.</li>
+                <li>Players may not request cards that they alreay have.</li>
+                <li>When a player has collected all the cards in a half-suit by themselves, they can lay it down face-up and win it for their team.</li>
+                <li>If a half-suit is scattered among the player's own team members, a player can declare a set on their turn by announcing correctly who has what card in the half-suit</li>
+                <li>If the player was not entirely correct in saying who had what card, but the entire half-suit was owned by their own team, then the half-suit is forfeit and neither side can win it. </li>
+                <li>If the player was incorrect and one or more of the cards were owned by the other team, then the half-suit is awarded to the other team.</li>
+                <li>Play continues until all half-suits have been accounted for. The team with more half-suits wins.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+</div> <!-- /container -->
+
+<script type="text/javascript" src="/javascripts/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="/javascripts/lodash.min.js"></script>
+<script type="text/javascript" src="/javascripts/moment.min.js"></script>
+<script type="text/javascript" src="/javascripts/modernizr.custom.79639.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.baraja.js"></script>
+<script type="text/javascript" src="/javascripts/react-with-addons.min.js"></script>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+    var sendRequest = function(url, type, data) {
+        var request = $.ajax({
+            url: url,
+            type: type,
+            data: data,
+            timeout: 5000,
+            contentType: "application/x-www-form-urlencoded",
+            dataType: "html"
+        });
+        request.fail(function(err){
+            console.log(err);
+        });
+        return request;
+    };
+    var socket = io(window.location.origin);
+    var complete_suits = ['CLUBS', 'DIAMONDS', 'HEARTS', 'SPADES'];
+    var complete_value = ['2', '3', '4', '5', '6', '7', '9', '10', 'JACK', 'QUEEN', 'KING', 'ACE'];
+    var complete_deck = [];
+    for (var i = 0; i < complete_suits.length; i++) {
+        for (var j = 0; j < complete_value.length; j++) {
+            complete_deck.push({
+                suit: complete_suits[i],
+                value: complete_value[j],
+                half_suit: (j<6 ? i:i+4),
+            });
+        }   
+    }
+</script>
+<script type="text/javascript" src="/javascripts/mindfk.js"></script>
+<script type="text/javascript">
+    React.render(
+        React.createElement(GameBody, {newGame: "{{ newGame }}", joinGame: "{{ joinGame }}", token: "{{ token }}"}), document.getElementById('content')
+    );
+</script>
+</body>
+</html>

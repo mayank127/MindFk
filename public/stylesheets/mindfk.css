@@ -1,0 +1,114 @@
+/* Space out content a bit */
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+    padding-bottom: 19px;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+}
+
+.header a {
+    text-decoration: none;
+}
+
+
+/* Custom page footer */
+.footer {
+    padding-top: 19px;
+    color: #777;
+    text-align: center;
+}
+
+/*user list*/
+
+.user-item {
+    display: block;
+    text-align: center;
+    cursor: default; 
+}
+
+.user-creator {
+    font-weight: bold;
+}
+.text-center{
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.bg-red{
+    background-color: #E08282;
+    font-weight: bolder;
+}
+
+.bg-blue{
+    background-color: #A3C3D3;
+    font-weight: bolder;
+}
+
+.bg-green{
+    background-color: #B8D0AF;
+    font-weight: bolder;
+}
+
+.bg-red .card-container .user-self{
+    background-color: #EE8282;
+    box-shadow: 3px 3px 15px #666;
+}
+
+.bg-blue .card-container .user-self{
+    background-color: #A3CCEE;
+    box-shadow: 3px 3px 15px #666;
+}
+
+.bg-red .front .user-self{
+    background-color: #EE8282;
+}
+
+.bg-blue .front .user-self{
+    background-color: #A3CCEE;
+}
+
+.card-img img{
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.card-show {
+    padding: 0;
+    margin: 0;
+    display: block;
+    list-style-type: none;
+}
+
+.card-show li{
+    margin: 20px;
+    cursor: pointer;
+}
+
+.transparent {
+    background: transparent;
+}
+
+.center {
+    text-align: center;
+}
+
+.name {
+    text-transform: capitalize;
+}
+
+.img-circle{
+    width: 100%;
+}
+
+.user-turn {
+    background-color: #B8D0AF !important;
+}
