@@ -20,7 +20,7 @@ var routes = require('./routes/index');
 app.use('/', routes);
 
 // launch app server
-var server = require('http').createServer(app).listen(80);
+var server = require('http').createServer(app).listen(process.env.PORT || 3000);
 
 require('./config/socket.js')(server);
 
