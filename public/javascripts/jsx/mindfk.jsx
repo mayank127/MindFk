@@ -55,10 +55,10 @@ var NewGameBox = React.createClass({
                                         <div>
                                             {this.nops.map(function(nop){
                                                 if(nop==that.state.nop){
-                                                    return <div className="btn btn-default col-md-3 active" key={nop} onClick={that.handleClick.bind(that, nop)}>{nop}</div>
+                                                    return <div className="btn btn-default col-md-3 col-xs-3 active" key={nop} onClick={that.handleClick.bind(that, nop)}>{nop}</div>
                                                 }
                                                 else{
-                                                    return <div className="btn btn-default col-md-3" key={nop} onClick={that.handleClick.bind(that, nop)}>{nop}</div>
+                                                    return <div className="btn btn-default col-md-3 col-xs-3" key={nop} onClick={that.handleClick.bind(that, nop)}>{nop}</div>
                                                 }
                                             })}
                                         </div>
@@ -172,7 +172,7 @@ var TeamPlayer = React.createClass({
             'user-self': (this.props.me.name == this.props.data.name),
         });
         var classes2 = cx({
-            'btn card front btn-default': true,
+            'btn card front btn-default col-md-12 col-xs-6': true,
             'user-self': (this.props.me.name == this.props.data.name),
             'disabled': (!this.props.asking),
             'user-turn': (this.props.data.turn),
@@ -185,10 +185,10 @@ var TeamPlayer = React.createClass({
 
         return (
             <div className={classes2} key={this.props.data.name} onClick={this.handleClick}>
-                <div className="user col-md-6">
+                <div className="user col-md-6 col-xs-6">
                     <img className={classes} src="/images/user_default.png"/>
                 </div>
-                <div className="content col-md-6">
+                <div className="content col-md-6 col-xs-6">
                     <h3 className="name">{name}</h3>
                     <p className="profession">{this.props.data.cards} cards {me} </p>
                 </div>
@@ -212,16 +212,16 @@ var Player = React.createClass({
     render: function(){
         var classes = cx({
             'user-item': true,
-            'col-md-6': true,
+            'col-md-6 col-xs-6': true,
             'user-creator': this.props.data.creator,
         });
         return (
             <div className={classes} key={this.props.data.name}>
-                <div className="col-md-offset-4 col-md-4">
+                <div className="col-md-offset-4 col-md-4 col-xs-offset-3 col-xs-6">
                     <img src="/images/user_default.png" className="img-circle"/>
                 </div>
-                <div className="col-md-4" />
-                <div className="col-md-12 center name">
+                <div className="col-md-4 col-xs-3" />
+                <div className="col-md-12 col-xs-12 center name">
                     <h4>{this.props.data.name}</h4>
                 </div>
             </div>
@@ -371,7 +371,7 @@ var GameCards = React.createClass({
                         });
                         var classes = cx({
                             'card-img': true,
-                            'col-md-3': true,
+                            'col-md-3 col-xs-3': true,
                             'btn': true,
                             'disabled': (disabled.length>0),
                             'active': (that.state.selected.suit==card.suit && that.state.selected.value==card.value),
@@ -387,13 +387,13 @@ var GameCards = React.createClass({
                 return(
                     <div>
                         <div className="row">
-                            <div className="btn btn-default col-md-3 transparent" onClick={that.showCards}> 
+                            <div className="btn btn-default col-md-3 col-xs-3 transparent" onClick={that.showCards}> 
                                 <i className="fa fa-arrow-left"> Back </i>
                             </div>
-                            <div className="col-md-6 center">
+                            <div className="col-md-6 col-xs-6 center">
                                 {selectedCard}
                             </div>
-                            <div className="btn btn-default col-md-3 transparent" onClick={that.announceSet}> 
+                            <div className="btn btn-default col-md-3 col-xs-3 transparent" onClick={that.announceSet}> 
                                 Announce <i className="fa fa-arrow-right"></i>
                             </div>
                         </div>
@@ -420,7 +420,7 @@ var GameCards = React.createClass({
                         });
                         var classes = cx({
                             'card-img': true,
-                            'col-md-3': true,
+                            'col-md-3 col-xs-3': true,
                             'btn': true,
                             'disabled': (disabled.length>0),
                             'active': (that.state.selected.suit==card.suit && that.state.selected.value==card.value),
@@ -448,13 +448,13 @@ var GameCards = React.createClass({
                 return(
                     <div>
                         <div className="row">
-                            <div className="btn btn-default col-md-3 transparent" onClick={that.showCards}> 
+                            <div className="btn btn-default col-md-3 col-xs-3 transparent" onClick={that.showCards}> 
                                 <i className="fa fa-arrow-left"> Back </i>
                             </div>
-                            <div className="col-md-6 center">
+                            <div className="col-md-6 col-xs-6 center">
                                 {selectedCard}
                             </div>
-                            <div className="btn btn-default col-md-3 transparent" onClick={that.doneAnnounceSet}> 
+                            <div className="btn btn-default col-md-3 col-xs-3 transparent" onClick={that.doneAnnounceSet}> 
                                 Done <i className="fa fa-arrow-right"></i>
                             </div>
                         </div>
@@ -541,17 +541,17 @@ var GamePlay = React.createClass({
         }
         return (
             <div className="row bg-green">
-                <div className="col-md-3 bg-blue">
+                <div className="col-md-3 bg-blue col-xs-12">
                     <div className="row">
                         <h2 className="text-center"> Team 1 - <span className="label label-default">{this.props.score[0]}</span> </h2>
                     </div>
                     <TeamList team={0} data={this.props.players} me={this.props.me} ask={askData} token={this.props.token}  waitCallback={this.wait}/>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6 col-xs-12">
                     <LastMove data={this.props.lastMove} />
                     <GameCards data={this.props.me} players={this.props.players} askUserCallback={this.askUser} wait={this.props.wait} token={this.props.token} waitCallback={this.wait}/>
                 </div>
-                <div className="col-md-3 bg-red">
+                <div className="col-md-3 bg-red col-xs-12">
                     <div className="row">
                         <h2 className="text-center"> Team 2 - <span className="label label-default">{this.props.score[1]}</span></h2>
                     </div>
@@ -608,6 +608,25 @@ var GameBody = React.createClass({
         });
     },
 
+    handleSelect: function(){
+        var text = React.findDOMNode(this.refs.url);
+        if(text){
+            var doc = document;
+            var range, selection;
+            if (doc.body.createTextRange) {
+                range = document.body.createTextRange();
+                range.moveToElementText(text);
+                range.select();
+            } else if (window.getSelection) {
+                selection = window.getSelection();        
+                range = document.createRange();
+                range.selectNodeContents(text);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }
+        }
+    },
+
     turnWaitingSet: function(val){
         var oldstate = this.state;
         oldstate.turnWaiting = val;
@@ -633,7 +652,7 @@ var GameBody = React.createClass({
             return (
                 <div>
                     <h4> 
-                        To invite a friend, give the following URL: <br/> <div className="center"><em className="text-info"> {window.location.origin}/game/{this.state.token} </em></div>
+                        To invite a friend, give the following URL: <br/> <div className="center row" onClick={this.handleSelect} ref="url"><em className="label label-info"> {window.location.origin}/game/{this.state.token} </em></div>
                         <hr/>
                         <i className="fa fa-spinner fa-spin"/> {ready}
                         <br/> 

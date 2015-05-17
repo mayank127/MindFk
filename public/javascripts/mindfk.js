@@ -55,10 +55,10 @@ var NewGameBox = React.createClass({displayName: "NewGameBox",
                                         React.createElement("div", null, 
                                             this.nops.map(function(nop){
                                                 if(nop==that.state.nop){
-                                                    return React.createElement("div", {className: "btn btn-default col-md-3 active", key: nop, onClick: that.handleClick.bind(that, nop)}, nop)
+                                                    return React.createElement("div", {className: "btn btn-default col-md-3 col-xs-3 active", key: nop, onClick: that.handleClick.bind(that, nop)}, nop)
                                                 }
                                                 else{
-                                                    return React.createElement("div", {className: "btn btn-default col-md-3", key: nop, onClick: that.handleClick.bind(that, nop)}, nop)
+                                                    return React.createElement("div", {className: "btn btn-default col-md-3 col-xs-3", key: nop, onClick: that.handleClick.bind(that, nop)}, nop)
                                                 }
                                             })
                                         )
@@ -172,7 +172,7 @@ var TeamPlayer = React.createClass({displayName: "TeamPlayer",
             'user-self': (this.props.me.name == this.props.data.name),
         });
         var classes2 = cx({
-            'btn card front btn-default': true,
+            'btn card front btn-default col-md-12 col-xs-6': true,
             'user-self': (this.props.me.name == this.props.data.name),
             'disabled': (!this.props.asking),
             'user-turn': (this.props.data.turn),
@@ -185,10 +185,10 @@ var TeamPlayer = React.createClass({displayName: "TeamPlayer",
 
         return (
             React.createElement("div", {className: classes2, key: this.props.data.name, onClick: this.handleClick}, 
-                React.createElement("div", {className: "user col-md-6"}, 
+                React.createElement("div", {className: "user col-md-6 col-xs-6"}, 
                     React.createElement("img", {className: classes, src: "/images/user_default.png"})
                 ), 
-                React.createElement("div", {className: "content col-md-6"}, 
+                React.createElement("div", {className: "content col-md-6 col-xs-6"}, 
                     React.createElement("h3", {className: "name"}, name), 
                     React.createElement("p", {className: "profession"}, this.props.data.cards, " cards ", me, " ")
                 )
@@ -212,16 +212,16 @@ var Player = React.createClass({displayName: "Player",
     render: function(){
         var classes = cx({
             'user-item': true,
-            'col-md-6': true,
+            'col-md-6 col-xs-6': true,
             'user-creator': this.props.data.creator,
         });
         return (
             React.createElement("div", {className: classes, key: this.props.data.name}, 
-                React.createElement("div", {className: "col-md-offset-4 col-md-4"}, 
+                React.createElement("div", {className: "col-md-offset-4 col-md-4 col-xs-offset-3 col-xs-6"}, 
                     React.createElement("img", {src: "/images/user_default.png", className: "img-circle"})
                 ), 
-                React.createElement("div", {className: "col-md-4"}), 
-                React.createElement("div", {className: "col-md-12 center name"}, 
+                React.createElement("div", {className: "col-md-4 col-xs-3"}), 
+                React.createElement("div", {className: "col-md-12 col-xs-12 center name"}, 
                     React.createElement("h4", null, this.props.data.name)
                 )
             )
@@ -371,7 +371,7 @@ var GameCards = React.createClass({displayName: "GameCards",
                         });
                         var classes = cx({
                             'card-img': true,
-                            'col-md-3': true,
+                            'col-md-3 col-xs-3': true,
                             'btn': true,
                             'disabled': (disabled.length>0),
                             'active': (that.state.selected.suit==card.suit && that.state.selected.value==card.value),
@@ -387,13 +387,13 @@ var GameCards = React.createClass({displayName: "GameCards",
                 return(
                     React.createElement("div", null, 
                         React.createElement("div", {className: "row"}, 
-                            React.createElement("div", {className: "btn btn-default col-md-3 transparent", onClick: that.showCards}, 
+                            React.createElement("div", {className: "btn btn-default col-md-3 col-xs-3 transparent", onClick: that.showCards}, 
                                 React.createElement("i", {className: "fa fa-arrow-left"}, " Back ")
                             ), 
-                            React.createElement("div", {className: "col-md-6 center"}, 
+                            React.createElement("div", {className: "col-md-6 col-xs-6 center"}, 
                                 selectedCard
                             ), 
-                            React.createElement("div", {className: "btn btn-default col-md-3 transparent", onClick: that.announceSet}, 
+                            React.createElement("div", {className: "btn btn-default col-md-3 col-xs-3 transparent", onClick: that.announceSet}, 
                                 "Announce ", React.createElement("i", {className: "fa fa-arrow-right"})
                             )
                         ), 
@@ -420,7 +420,7 @@ var GameCards = React.createClass({displayName: "GameCards",
                         });
                         var classes = cx({
                             'card-img': true,
-                            'col-md-3': true,
+                            'col-md-3 col-xs-3': true,
                             'btn': true,
                             'disabled': (disabled.length>0),
                             'active': (that.state.selected.suit==card.suit && that.state.selected.value==card.value),
@@ -448,13 +448,13 @@ var GameCards = React.createClass({displayName: "GameCards",
                 return(
                     React.createElement("div", null, 
                         React.createElement("div", {className: "row"}, 
-                            React.createElement("div", {className: "btn btn-default col-md-3 transparent", onClick: that.showCards}, 
+                            React.createElement("div", {className: "btn btn-default col-md-3 col-xs-3 transparent", onClick: that.showCards}, 
                                 React.createElement("i", {className: "fa fa-arrow-left"}, " Back ")
                             ), 
-                            React.createElement("div", {className: "col-md-6 center"}, 
+                            React.createElement("div", {className: "col-md-6 col-xs-6 center"}, 
                                 selectedCard
                             ), 
-                            React.createElement("div", {className: "btn btn-default col-md-3 transparent", onClick: that.doneAnnounceSet}, 
+                            React.createElement("div", {className: "btn btn-default col-md-3 col-xs-3 transparent", onClick: that.doneAnnounceSet}, 
                                 "Done ", React.createElement("i", {className: "fa fa-arrow-right"})
                             )
                         ), 
@@ -541,17 +541,17 @@ var GamePlay = React.createClass({displayName: "GamePlay",
         }
         return (
             React.createElement("div", {className: "row bg-green"}, 
-                React.createElement("div", {className: "col-md-3 bg-blue"}, 
+                React.createElement("div", {className: "col-md-3 bg-blue col-xs-12"}, 
                     React.createElement("div", {className: "row"}, 
                         React.createElement("h2", {className: "text-center"}, " Team 1 - ", React.createElement("span", {className: "label label-default"}, this.props.score[0]), " ")
                     ), 
                     React.createElement(TeamList, {team: 0, data: this.props.players, me: this.props.me, ask: askData, token: this.props.token, waitCallback: this.wait})
                 ), 
-                React.createElement("div", {className: "col-md-6"}, 
+                React.createElement("div", {className: "col-md-6 col-xs-12"}, 
                     React.createElement(LastMove, {data: this.props.lastMove}), 
                     React.createElement(GameCards, {data: this.props.me, players: this.props.players, askUserCallback: this.askUser, wait: this.props.wait, token: this.props.token, waitCallback: this.wait})
                 ), 
-                React.createElement("div", {className: "col-md-3 bg-red"}, 
+                React.createElement("div", {className: "col-md-3 bg-red col-xs-12"}, 
                     React.createElement("div", {className: "row"}, 
                         React.createElement("h2", {className: "text-center"}, " Team 2 - ", React.createElement("span", {className: "label label-default"}, this.props.score[1]))
                     ), 
@@ -608,6 +608,25 @@ var GameBody = React.createClass({displayName: "GameBody",
         });
     },
 
+    handleSelect: function(){
+        var text = React.findDOMNode(this.refs.url);
+        if(text){
+            var doc = document;
+            var range, selection;
+            if (doc.body.createTextRange) {
+                range = document.body.createTextRange();
+                range.moveToElementText(text);
+                range.select();
+            } else if (window.getSelection) {
+                selection = window.getSelection();        
+                range = document.createRange();
+                range.selectNodeContents(text);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }
+        }
+    },
+
     turnWaitingSet: function(val){
         var oldstate = this.state;
         oldstate.turnWaiting = val;
@@ -633,7 +652,7 @@ var GameBody = React.createClass({displayName: "GameBody",
             return (
                 React.createElement("div", null, 
                     React.createElement("h4", null, 
-                        "To invite a friend, give the following URL: ", React.createElement("br", null), " ", React.createElement("div", {className: "center"}, React.createElement("em", {className: "text-info"}, " ", window.location.origin, "/game/", this.state.token, " ")), 
+                        "To invite a friend, give the following URL: ", React.createElement("br", null), " ", React.createElement("div", {className: "center row", onClick: this.handleSelect, ref: "url"}, React.createElement("em", {className: "label label-info"}, " ", window.location.origin, "/game/", this.state.token, " ")), 
                         React.createElement("hr", null), 
                         React.createElement("i", {className: "fa fa-spinner fa-spin"}), " ", ready, 
                         React.createElement("br", null)
