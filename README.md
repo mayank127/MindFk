@@ -20,7 +20,7 @@ Application design from <a href="https://github.com/benas/gamehub.io" target="_b
 [https://mindfk.herokuapp.com/](https://mindfk.herokuapp.com/)
 
 ### License
-Mindfk is released under e [MIT license](http://opensource.org/licenses/MIT):
+MindFk is released under e [MIT license](http://opensource.org/licenses/MIT):
 
 ```
 The MIT License (MIT)
